@@ -12,30 +12,30 @@ def modify_file():
 def stretch(X,a,b):
     A = np.array([[a, 0],
                   [0, b]])
-    X_copy = X.T.copy()
-    X_st = (A @ X_copy).T
+    X_copy = X.copy()
+    X_st = (A @ X_copy.T).T
     return A, X_st
 
 def shear(X,a,b):
     A = np.array([[1, a],
                   [b, 1]])
-    X_copy = X.T.copy()
-    X_sh = (A @ X_copy).T
+    X_copy = X.copy()
+    X_sh = (A @ X_copy.T).T
     return A, X_sh
 
 def reflection(X,a,b):
     A = (1/(pow(a, 2)+pow(b, 2))) * np.array([[pow(a, 2)-pow(b, 2), 2*a*b],
                                               [2*a*b, pow(b, 2)-pow(a, 2)]])
-    X_copy = X.T.copy()
-    X_ref = (A @ X_copy).T
+    X_copy = X.copy()
+    X_ref = (A @ X_copy.T).T
     return A, X_ref
 
 def rotation(X, theta):
     theta = np.deg2rad(theta)
     A = np.array([[np.cos(theta), -np.sin(theta)],
                   [np.sin(theta), np.cos(theta)]])
-    X_copy = X.T.copy()
-    X_rot = (A @ X_copy).T
+    X_copy = X.copy()
+    X_rot = (A @ X_copy.T).T
     return A, X_rot
 
 def plot_fox_2D(X):
